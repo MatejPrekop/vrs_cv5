@@ -8,6 +8,12 @@
 #ifndef VRS_CV5_H_
 #define VRS_CV5_H_
 
-
-
 #endif /* VRS_CV5_H_ */
+
+void adc_init(void);
+void setLed(void);
+int konverzia(void);
+void nvic_fun(void);
+
+
+

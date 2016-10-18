@@ -29,6 +29,7 @@
 /* Includes */
 #include <stddef.h>
 #include "stm32l1xx.h"
+#include "vrs_cv5.h"
 
 /* Private typedef */
 /* Private define  */
@@ -66,9 +67,8 @@ int main(void) {
 
 	/* TODO - Add your application code here */
 
-#include "adc_init.h"
-#include "setLed.h"
-#include "konverzia.h"
+
+
 	adc_init();
 	setLed();
 
