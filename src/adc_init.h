@@ -33,7 +33,7 @@ void adc_init(void) {
 		ADC_StructInit(&ADC_InitStructure);
 		/* ADC1 configuration */
 		ADC_InitStructure.ADC_Resolution = ADC_Resolution_12b;
-		ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;
+		ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;
 		ADC_InitStructure.ADC_ExternalTrigConvEdge =
 				ADC_ExternalTrigConvEdge_None;
 		ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
