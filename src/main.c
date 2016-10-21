@@ -68,27 +68,28 @@ int main(void) {
 	/* TODO - Add your application code here */
 
 
-
+	//nvic_fun();
 	adc_init();
-	setLed();
+	//setLed();
+	gpio_init();
 
-	int merana_hodnota;
+	uint16_t hodnota_z_adc;
 	int x;
 	/* Infinite loop */
 	while (1) {
-		merana_hodnota = konverzia();
+		hodnota_z_adc = merana_hodnota;
 
-		if (merana_hodnota < 1300) {
+		if (hodnota_z_adc < 1300) {
 			for (x = 0; x < 100000; x++) {
 			}
 			GPIO_ToggleBits(GPIOA, GPIO_Pin_5);
 		}
-		if ((merana_hodnota >= 1300) & (merana_hodnota < 2600)) {
+		if ((hodnota_z_adc >= 1300) & (hodnota_z_adc < 2600)) {
 			for (x = 0; x < 500000; x++) {
 			}
 			GPIO_ToggleBits(GPIOA, GPIO_Pin_5);
 		}
-		if (merana_hodnota >= 2600) {
+		if (hodnota_z_adc >= 2600) {
 			for (x = 0; x < 1000000; x++) {
 			}
 			GPIO_ToggleBits(GPIOA, GPIO_Pin_5);
