@@ -9,7 +9,7 @@
 #define VRS_CV5_H_
 
 #endif /* VRS_CV5_H_ */
-
+extern uint16_t merana_hodnota;
 void adc_init(void);
 void gpio_init(void);
 void setLed(void);
