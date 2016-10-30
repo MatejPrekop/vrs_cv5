@@ -144,11 +144,14 @@ void USART2_IRQHandler(void) {
 		if (posielana_hodnota[x] != 0) {
 			// posielanie znaku z pola charov
 			USART_SendData(USART2, posielana_hodnota[x++]);
+			for (int i = 0; i < 1000; i++)
+				;
 		} else {
 			x = 0;
 			// mazanie TXE
 			USART_ClearFlag(USART2, USART_FLAG_TXE);
 		}
+
 	}
 }
 

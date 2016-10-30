@@ -61,17 +61,17 @@ int main(void) {
 	/* Infinite loop */
 	while (1) {
 		hodnota_z_adc = merana_hodnota;
+		{
 
-		if (mod == 0) {
-			sprintf(posielana_hodnota, "%d\r\n", hodnota_z_adc);
-		} else {
-			sprintf(posielana_hodnota, "%d.%dV\r\n",
-					(int) (hodnota_z_adc * 330 / 4096) / 100,
-					(int) (hodnota_z_adc * 330 / 4096) % 100);
+			if (mod == 0) {
+				sprintf(posielana_hodnota, "%d\r\n", hodnota_z_adc);
+			} else {
+				sprintf(posielana_hodnota, "%d.%dV\r\n",
+						(int) (hodnota_z_adc * 330 / 4096) / 100,
+						(int) (hodnota_z_adc * 330 / 4096) % 100);
+			}
+			USART_ITConfig(USART2, USART_IT_TXE, ENABLE);
 		}
-		USART_ITConfig(USART2, USART_IT_TXE, ENABLE);
-
-
 	}
 	return 0;
 }
