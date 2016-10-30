@@ -46,7 +46,7 @@
  **
  **===========================================================================
  */
-uint16_t merana_hodnota=0;
+uint16_t merana_hodnota = 0;
 char znak;
 char posielana_hodnota[10];
 int mod;
@@ -56,14 +56,24 @@ int main(void) {
 
 	gpio_init();
 	adc_init();
-
+	USART_init();
 
 	/* Infinite loop */
 	while (1) {
 		//sledovanie v DEBUG hodnotu z ADC
 		hodnota_z_adc = merana_hodnota;
 
-		//for (int x=0;x<500000;x++);
+		if (mod == 0) {
+			sprintf(posielana_hodnota, "%d\r\n", hodnota_z_adc);
+		} else {
+			sprintf(posielana_hodnota, "%d.%dV\r\n",
+					(int) (hodnota_z_adc * 330 / 4096) / 100,
+					(int) (hodnota_z_adc * 330 / 4096) % 100);
+		}
+		Send_String(posielana_hodnota);
+
+		for (int x = 0; x < 500000; x++)
+			;
 
 	}
 	return 0;
