@@ -10,12 +10,11 @@
 
 #endif /* VRS_CV5_H_ */
 extern uint16_t merana_hodnota;
+
+extern int mod;
 void adc_init(void);
 void gpio_init(void);
-void setLed(void);
-int konverzia(void);
+//int konverzia(void);
 void nvic_fun(void);
 void ADC1_IRQHandler(void);
-
-
 

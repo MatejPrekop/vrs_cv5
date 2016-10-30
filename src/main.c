@@ -30,6 +30,7 @@
 #include <stddef.h>
 #include "stm32l1xx.h"
 #include "vrs_cv5.h"
+#include <stdio.h>
 
 /* Private typedef */
 /* Private define  */
@@ -46,41 +47,23 @@
  **===========================================================================
  */
 uint16_t merana_hodnota=0;
+char znak;
+char posielana_hodnota[10];
+int mod;
 int main(void) {
-
-	int x;
 
 	uint16_t hodnota_z_adc;
 
-
-	//nvic_fun();
 	gpio_init();
 	adc_init();
-
-	//setLed();
-
-
 
 
 	/* Infinite loop */
 	while (1) {
+		//sledovanie v DEBUG hodnotu z ADC
 		hodnota_z_adc = merana_hodnota;
 
-		if (hodnota_z_adc < 1300) {
-			for (x = 0; x < 100000; x++) {
-			}
-			GPIO_ToggleBits(GPIOA, GPIO_Pin_5);
-		}
-		if ((hodnota_z_adc >= 1300) & (hodnota_z_adc < 2600)) {
-			for (x = 0; x < 500000; x++) {
-			}
-			GPIO_ToggleBits(GPIOA, GPIO_Pin_5);
-		}
-		if (hodnota_z_adc >= 2600) {
-			for (x = 0; x < 1000000; x++) {
-			}
-			GPIO_ToggleBits(GPIOA, GPIO_Pin_5);
-		}
+		//for (int x=0;x<500000;x++);
 
 	}
 	return 0;
