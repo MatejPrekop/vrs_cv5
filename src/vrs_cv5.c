@@ -88,7 +88,6 @@ void ADC1_IRQHandler(void) {
 		ADC_ClearFlag(ADC1, ADC_FLAG_OVR);
 
 }
-
 void USART_init(void) {
 	GPIO_InitTypeDef USART_GPIOStructure;
 	USART_GPIOStructure.GPIO_Pin = GPIO_Pin_2 | GPIO_Pin_3;
@@ -141,15 +140,15 @@ void USART2_IRQHandler(void) {
 		}
 
 	}
-}
-void Send_String(char* string) {
-	int i = 0;
-	while (string[i] != 0) {
-		// prenos charu z prebrateho stringu
-		USART_SendData(USART2, string[i]);
-		i++;
-		// cakanie na dokoncenie prenosu
-		while (!USART_GetFlagStatus(USART2, USART_FLAG_TC))
-			;
+	if (USART_GetFlagStatus(USART2, USART_FLAG_TXE)) {
+		if (posielana_hodnota[x] != 0) {
+			// posielanie znaku z pola charov
+			USART_SendData(USART2, posielana_hodnota[x++]);
+		} else {
+			x = 0;
+			// mazanie TXE
+			USART_ClearFlag(USART2, USART_FLAG_TXE);
+		}
 	}
 }
+

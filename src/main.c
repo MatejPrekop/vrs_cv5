@@ -60,7 +60,6 @@ int main(void) {
 
 	/* Infinite loop */
 	while (1) {
-		//sledovanie v DEBUG hodnotu z ADC
 		hodnota_z_adc = merana_hodnota;
 
 		if (mod == 0) {
@@ -70,10 +69,8 @@ int main(void) {
 					(int) (hodnota_z_adc * 330 / 4096) / 100,
 					(int) (hodnota_z_adc * 330 / 4096) % 100);
 		}
-		Send_String(posielana_hodnota);
+		USART_ITConfig(USART2, USART_IT_TXE, ENABLE);
 
-		for (int x = 0; x < 500000; x++)
-			;
 
 	}
 	return 0;
